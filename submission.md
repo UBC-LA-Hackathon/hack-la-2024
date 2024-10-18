@@ -2,11 +2,11 @@
 - "submit" your work by forking the repo (see README), and make a pull request with your final submission including an update of this submission.md file. 
 
 List your group members:
-> Your Group Members
+> Alison's awesome team of 1 
 
 # This Project
-> Link to presentation: 
-> Give a brief description of the final product:
+> Link to presentation: some_slides.com
+> Give a brief description of the final product: this is the best project ever
 
 # Reflection
 ## Approach
