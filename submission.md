@@ -2,11 +2,11 @@
 - "submit" your work by forking the repo (see README), and make a pull request with your final submission including an update of this submission.md file. 
 
 List your group members:
-> Your Group Members
+> Your Group Members: A, B, C, D
 
 # This Project
-> Link to presentation: 
-> Give a brief description of the final product:
+> Link to presentation: test.com
+> Give a brief description of the final product: Testing
 
 # Reflection
 ## Approach
