@@ -106,15 +106,15 @@ driver0.maximize_window()
 
 
 # Post users and arguments from the course discussion
-user1 = "phoenix"
-user2 = "miles"
-discussiontitle = "Goku vs The Sun"
+discussion = script.discussion_array[0]
+user1 = discussion.get_user1()
+user2 = discussion.get_user2()
+discussiontitle = discussion.get_title()
 
 disc_code = new_discussion_spectate(discussiontitle, driver0)
 post_user1(user1, disc_code, driver1)
 post_user2(user2, disc_code, driver2)
 
-discussion = script.discussion_array[0]
 for i in range(0, len(discussion.get_messages()) - 1):
     if i % 2 == 0:
         post_argument(discussion.get_messages()[i], driver1)    # Argument 1 posted in browser 1

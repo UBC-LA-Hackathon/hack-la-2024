@@ -9,9 +9,13 @@ data = json.load(banksy)
 
 class Discussion:
     def __init__(self):
+        self.title = None
         self.user1 = None
         self.user2 = None
         self.messages = []
+
+    def add_title(self, title):
+        self.title = title
 
     def add_message(self, message):
         self.messages.append(message)
@@ -26,6 +30,15 @@ class Discussion:
         for msg in self.messages:
             print(msg)
 
+    def get_user1(self):
+        return self.user1
+
+    def get_user2(self):
+        return self.user2
+
+    def get_title(self):
+        return self.title
+
     def get_messages(self):
         return self.messages
 
@@ -34,8 +47,10 @@ discussion_array = []
 
 for discussions in data:
     discussion_data = discussions['discussion_topic']
+
     discussion = Discussion()
 
+    discussion.add_title(discussion_data['title'])
     discussion.add_user(discussion_data['user_name'])
     discussion.add_message(discussion_data['message'])
 
