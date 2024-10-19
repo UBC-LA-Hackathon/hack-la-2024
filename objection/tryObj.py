@@ -10,7 +10,7 @@ driver_path = "./chromedriver.exe"  # Ensure you have the correct path to your C
 service = Service(driver_path)  # Create a Service object
 options = Options()
 
-def post_user(user, driver):
+def post_user1(user, driver):
     driver.get('https://objection.lol/courtroom/3792uz')
     driver.implicitly_wait(10)
 
@@ -26,6 +26,30 @@ def post_user(user, driver):
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
     submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-dialog__content.v-dialog__content--active > div > div > form > div.v-card__actions > button:nth-child(3) > span')
     submit_button.click()
+
+
+def post_user2(user, driver):
+    driver.get('https://objection.lol/courtroom/3792uz')
+    driver.implicitly_wait(10)
+
+    # Find and interact with the text input (example selector, modify as needed)
+    # text_input = driver.find_element("id", "input-631")
+    text_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[3]/div/div/form/div[2]/div/div/div/div/div[1]/div/input')
+
+    # Enter the argument
+    # text_input.send_keys(argument)
+    text_input.send_keys(user)
+
+    # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
+    submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-dialog__content.v-dialog__content--active > div > div > form > div.v-card__actions > button:nth-child(3) > span')
+    submit_button.click()
+
+    characterChoice = driver.find_element(by=By.XPATH, value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div[1]/div/div[3]')
+    characterChoice.click()
+    driver.implicitly_wait(10)
+    character = driver.find_element(By.CSS_SELECTOR, value='#app > div.v-dialog__content.v-dialog__content--active > div > div > div > div.d-flex.flex-wrap.mt-4 > div:nth-child(2)')
+    character.click()
 
 
 # Function to open an instance of objection.lol and post an argument
@@ -57,8 +81,8 @@ user2 = "miles"
 argument1 = "Your argument is invalid bro"
 argument2 = "No, your argument is invalid bro!"
 
-post_user(user1, driver1)
-post_user(user2, driver2)
+post_user1(user1, driver1)
+post_user2(user2, driver2)
 
 post_argument(argument1, driver1)  # Argument 1 posted in browser 1
 time.sleep(5)  # Adding delay for timing (adjust as needed)
