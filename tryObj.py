@@ -13,8 +13,31 @@ driver_path = "chromedriver.exe"  # Ensure you have the correct path to your Chr
 service = Service(driver_path)  # Create a Service object
 options = Options()
 
-def post_user1(user, driver):
-    driver.get('https://objection.lol/courtroom/3792uz')
+def new_discussion_spectate(discussiontitle, driver):
+    driver.get('https://objection.lol/courtroom')
+    driver.implicitly_wait(10)
+
+    text_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[1]/div[2]/main/div/div/form/div[1]/div[1]/div/div/div/div/input')
+    text_input.send_keys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b")
+    text_input.send_keys(discussiontitle)
+
+    text_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[1]/div[2]/main/div/div/form/div[2]/div[2]/div/div/div/div[1]/input')
+
+    discussion_code = text_input.get_attribute('value')
+    print(discussion_code)
+
+    submit_button = driver.find_element(by=By.XPATH, value='/html/body/div/div[1]/div[2]/main/div/div/form/div[4]/div/button')
+    submit_button.click()
+
+    spectate_button = driver.find_element(by=By.XPATH,
+                                        value='/html/body/div/div[3]/div/div/form/div[3]/button[1]')
+    spectate_button.click()
+
+    return discussion_code
+def post_user1(user, disc_code, driver):
+    driver.get('https://objection.lol/courtroom/' + disc_code)
     driver.implicitly_wait(10)
 
     # Find and interact with the text input (example selector, modify as needed)
@@ -29,10 +52,8 @@ def post_user1(user, driver):
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
     submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-dialog__content.v-dialog__content--active > div > div > form > div.v-card__actions > button:nth-child(3) > span')
     submit_button.click()
-
-
-def post_user2(user, driver):
-    driver.get('https://objection.lol/courtroom/3792uz')
+def post_user2(user, disc_code, driver):
+    driver.get('https://objection.lol/courtroom/' + disc_code)
     driver.implicitly_wait(10)
 
     # Find and interact with the text input (example selector, modify as needed)
@@ -58,7 +79,7 @@ def post_user2(user, driver):
 # Function to open an instance of objection.lol and post an argument
 def post_argument(argument, driver):
     # driver.get('https://objection.lol/courtroom/3792uz')
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(20)
 
     # Find and interact with the text input (example selector, modify as needed)
     # text_input = driver.find_element("id", "input-631")
@@ -70,20 +91,28 @@ def post_argument(argument, driver):
     text_input.send_keys(argument)
 
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
+
     submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-application--wrap > div.container.pa-0.pa-lg-2.container--fluid > main > div > div > div.row.no-gutters > div:nth-child(1) > div > div:nth-child(4) > div:nth-child(2) > div > div > div:nth-child(2) > div > div.pl-1 > button')
     submit_button.click()
 
 
 # Open two instances of Chrome with different options if needed
+
 driver1 = webdriver.Chrome()
 driver2 = webdriver.Chrome()
+driver0 = webdriver.Chrome()
+
+driver0.maximize_window()
+
 
 # Post users and arguments from the course discussion
 user1 = "phoenix"
 user2 = "miles"
+discussiontitle = "Goku vs The Sun"
 
-post_user1(user1, driver1)
-post_user2(user2, driver2)
+disc_code = new_discussion_spectate(discussiontitle, driver0)
+post_user1(user1, disc_code, driver1)
+post_user2(user2, disc_code, driver2)
 
 discussion = script.discussion_array[0]
 for i in range(0, len(discussion.get_messages()) - 1):
@@ -101,5 +130,7 @@ for i in range(0, len(discussion.get_messages()) - 1):
 time.sleep(300)  # Adjust the time to keep the browser open before closing
 
 # Close the browser windows when done
+driver0.quit()
+
 driver1.quit()
 driver2.quit()
