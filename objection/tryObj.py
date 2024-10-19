@@ -17,15 +17,17 @@ def post_argument(argument, driver):
     time.sleep(5)
 
     # Find and interact with the text input (example selector, modify as needed)
-    text_input = driver.find_element("id", "input-631")
+    input_field = driver.find_element(By.XPATH, '//label[text()="Username"]/following-sibling::input')
+    time.sleep(5)
 
     # Enter the argument
     # text_input.send_keys(argument)
-    text_input.send_keys("Chill")
+    text_input.input.send_keys("Chill")
 
+    time.sleep(5)
 
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
-    submit_button = driver.find_element(By.CSS_SELECTOR, 'submit button selector here')
+    submit_button = driver.find_element("class name", "v-btn__content")
     submit_button.click()
 
 
@@ -48,4 +50,4 @@ time.sleep(300)  # Adjust the time to keep the browser open before closing
 
 # Close the browser windows when done
 driver1.quit()
-driver2.quit()
+# driver2.quit()
