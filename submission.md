@@ -2,7 +2,9 @@
 - "submit" your work by forking the repo (see README), and make a pull request with your final submission including an update of this submission.md file. 
 
 List your group members:
-> Your Group Members
+> Nazia
+> Vivaan
+> Nikita
 
 # This Project
 > Link to presentation: 
