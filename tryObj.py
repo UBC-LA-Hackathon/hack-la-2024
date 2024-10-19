@@ -3,10 +3,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+
+import script
+from script import Discussion
 import time
 
 # Set up your WebDriver (Chrome in this example)
-driver_path = "./chromedriver.exe"  # Ensure you have the correct path to your ChromeDriver
+driver_path = "chromedriver.exe"  # Ensure you have the correct path to your ChromeDriver
 service = Service(driver_path)  # Create a Service object
 options = Options()
 
@@ -78,15 +81,19 @@ driver2 = webdriver.Chrome()
 # Post users and arguments from the course discussion
 user1 = "phoenix"
 user2 = "miles"
-argument1 = "Your argument is invalid bro"
-argument2 = "No, your argument is invalid bro!"
 
 post_user1(user1, driver1)
 post_user2(user2, driver2)
 
-post_argument(argument1, driver1)  # Argument 1 posted in browser 1
-time.sleep(5)  # Adding delay for timing (adjust as needed)
-post_argument(argument2, driver2)  # Argument 2 posted in browser 2
+discussion = script.discussion_array[0]
+for i in range(0, len(discussion.get_messages()) - 1):
+    if i % 2 == 0:
+        post_argument(discussion.get_messages()[i], driver1)    # Argument 1 posted in browser 1
+    else:
+        post_argument(discussion.get_messages()[i], driver2)     # Argument 2 posted in browser 2
+
+    time.sleep(5)                                           # Adding delay for timing (adjust as needed)
+
 
 # Add more interactions if necessary, or let the drivers stay open to watch the results
 

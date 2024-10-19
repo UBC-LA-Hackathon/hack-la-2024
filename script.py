@@ -26,24 +26,11 @@ class Discussion:
         for msg in self.messages:
             print(msg)
 
+    def get_messages(self):
+        return self.messages
 
-# discussion_data = data[0]['discussion_topic']
-#
-# discussion = Discussion()
-#
-# discussion.add_user(discussion_data['user_name'])
-# discussion.add_message(discussion_data['message'])
-#
-# for reply in discussion_data['replies']:
-#     discussion.add_user(reply['user_name'])
-#     discussion.add_message(reply['message'])
-#
-# discussion.print_messages()
-# print(f"User 1: {discussion.user1}")
-# print(f"User 2: {discussion.user2}")
 
 discussion_array = []
-
 
 for discussions in data:
     discussion_data = discussions['discussion_topic']
@@ -57,9 +44,6 @@ for discussions in data:
         discussion.add_message(reply['message'])
 
     discussion_array.append(discussion)
-    # print(f"User 1: {discussion.user1}")
-    # print(f"User 2: {discussion.user2}")
-    # discussion.print_messages()
 
 for i in discussion_array:
     print(f"User 1: {i.user1}")
