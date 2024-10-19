@@ -49,7 +49,7 @@ def post_argument(argument, driver):
 
 # Open two instances of Chrome with different options if needed
 driver1 = webdriver.Chrome()
-# driver2 = webdriver.Chrome()
+driver2 = webdriver.Chrome()
 
 # Post users and arguments from the course discussion
 user1 = "phoenix"
@@ -58,11 +58,11 @@ argument1 = "Your argument is invalid bro"
 argument2 = "No, your argument is invalid bro!"
 
 post_user(user1, driver1)
-# post_user(user2, driver2)
+post_user(user2, driver2)
 
 post_argument(argument1, driver1)  # Argument 1 posted in browser 1
-# time.sleep(20)  # Adding delay for timing (adjust as needed)
-# post_argument(argument2, driver2)  # Argument 2 posted in browser 2
+time.sleep(5)  # Adding delay for timing (adjust as needed)
+post_argument(argument2, driver2)  # Argument 2 posted in browser 2
 
 # Add more interactions if necessary, or let the drivers stay open to watch the results
 
@@ -71,4 +71,4 @@ time.sleep(300)  # Adjust the time to keep the browser open before closing
 
 # Close the browser windows when done
 driver1.quit()
-# driver2.quit()
+driver2.quit()
