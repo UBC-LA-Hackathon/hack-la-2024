@@ -21,7 +21,7 @@ def post_user(user, driver):
 
     # Enter the argument
     # text_input.send_keys(argument)
-    text_input.send_keys(user1)
+    text_input.send_keys(user)
 
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
     submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-dialog__content.v-dialog__content--active > div > div > form > div.v-card__actions > button:nth-child(3) > span')
@@ -31,34 +31,36 @@ def post_user(user, driver):
 # Function to open an instance of objection.lol and post an argument
 def post_argument(argument, driver):
     # driver.get('https://objection.lol/courtroom/3792uz')
-    # driver.implicitly_wait(10)
+    driver.implicitly_wait(30)
 
     # Find and interact with the text input (example selector, modify as needed)
     # text_input = driver.find_element("id", "input-631")
-    text_input = driver.find_element(by=By.XPATH, value='/html/body/div/div[3]/div/div/form/div[2]/div/div/div/div/div[1]/div/input')
+    text_input = driver.find_element(by=By.XPATH, value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[2]/div/div[2]/textarea')
+    text_input.click()
 
     # Enter the argument
     # text_input.send_keys(argument)
     text_input.send_keys(argument)
 
     # Simulate pressing "Enter" or clicking a button to submit (modify selector as needed)
-    submit_button = driver.find_element(By.CSS_SELECTOR, 'submit button selector here')
+    submit_button = driver.find_element(By.CSS_SELECTOR, '#app > div.v-application--wrap > div.container.pa-0.pa-lg-2.container--fluid > main > div > div > div.row.no-gutters > div:nth-child(1) > div > div:nth-child(4) > div:nth-child(2) > div > div > div:nth-child(2) > div > div.pl-1 > button')
     submit_button.click()
 
 
 # Open two instances of Chrome with different options if needed
 driver1 = webdriver.Chrome()
-# driver2 = webdriver.Chrome(service=service, options=options)
+# driver2 = webdriver.Chrome()
 
 # Post users and arguments from the course discussion
 user1 = "phoenix"
 user2 = "miles"
-argument1 = "Your first argument here"
-argument2 = "Your second argument here"
+argument1 = "Your argument is invalid bro"
+argument2 = "No, your argument is invalid bro!"
 
 post_user(user1, driver1)
+# post_user(user2, driver2)
 
-# post_argument(argument1, driver1)  # Argument 1 posted in browser 1
+post_argument(argument1, driver1)  # Argument 1 posted in browser 1
 # time.sleep(20)  # Adding delay for timing (adjust as needed)
 # post_argument(argument2, driver2)  # Argument 2 posted in browser 2
 
