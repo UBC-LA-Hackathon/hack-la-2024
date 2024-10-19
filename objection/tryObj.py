@@ -33,6 +33,8 @@ def post_argument(argument, driver):
 driver1 = webdriver.Chrome(service=service, options=options)
 # driver2 = webdriver.Chrome(service=service, options=options)
 
+driver1.get("https://objection.lol/courtroom/3792uz")
+
 # Post arguments from the course discussion
 argument1 = "Your first argument here"
 argument2 = "Your second argument here"
@@ -48,4 +50,4 @@ time.sleep(300)  # Adjust the time to keep the browser open before closing
 
 # Close the browser windows when done
 driver1.quit()
-driver2.quit()
+# driver2.quit()
