@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.options import Options
 import script
 from script import Discussion
 import time
+import random
+
 
 # Set up your WebDriver (Chrome in this example)
 driver_path = "chromedriver.exe"  # Ensure you have the correct path to your ChromeDriver
@@ -75,6 +77,20 @@ def post_user2(user, disc_code, driver):
     character = driver.find_element(By.CSS_SELECTOR, value='#app > div.v-dialog__content.v-dialog__content--active > div > div > div > div.d-flex.flex-wrap.mt-4 > div:nth-child(2)')
     character.click()
 
+def normal(driver):
+    face_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[1]/div/img')
+    face_input.click()
+
+def desk(driver):
+    face_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[2]/div/img')
+    face_input.click()
+
+def point(driver):
+    face_input = driver.find_element(by=By.XPATH,
+                                     value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[3]/div/img')
+    face_input.click()
 
 # Function to open an instance of objection.lol and post an argument
 def post_argument(argument, driver):
@@ -83,6 +99,16 @@ def post_argument(argument, driver):
 
     # Find and interact with the text input (example selector, modify as needed)
     # text_input = driver.find_element("id", "input-631")
+
+    random_number = random.choice([1, 2, 3])
+
+    if random_number == 1:
+        normal(driver)
+    elif random_number == 2:
+        desk(driver)
+    else:
+        point(driver)
+
     text_input = driver.find_element(by=By.XPATH, value='/html/body/div/div[2]/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[2]/div/div[2]/textarea')
     text_input.click()
 
