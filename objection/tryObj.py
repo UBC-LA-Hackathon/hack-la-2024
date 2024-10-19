@@ -14,10 +14,11 @@ options = Options()
 # Function to open an instance of objection.lol and post an argument
 def post_argument(argument, driver):
     driver.get('https://objection.lol/courtroom/3792uz')
-    time.sleep(5)
+    driver.implicitly_wait(10)
 
     # Find and interact with the text input (example selector, modify as needed)
-    text_input = driver.find_element("id", "input-631")
+    # text_input = driver.find_element("id", "input-631")
+    text_input = driver.find_element(by=By.XPATH, value='/html/body/div/div[3]/div/div/form/div[2]/div/div/div/div/div[1]/div/input')
 
     # Enter the argument
     # text_input.send_keys(argument)
@@ -30,7 +31,7 @@ def post_argument(argument, driver):
 
 
 # Open two instances of Chrome with different options if needed
-driver1 = webdriver.Chrome(service=service, options=options)
+driver1 = webdriver.Chrome()
 # driver2 = webdriver.Chrome(service=service, options=options)
 
 # Post arguments from the course discussion
@@ -48,4 +49,4 @@ time.sleep(300)  # Adjust the time to keep the browser open before closing
 
 # Close the browser windows when done
 driver1.quit()
-driver2.quit()
+# driver2.quit()
