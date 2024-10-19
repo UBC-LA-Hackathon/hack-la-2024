@@ -1,0 +1,24 @@
+[
+    {
+      "title": "Discussion 1",
+      "replies": [
+        { "name": "Alice", "message": "I think we should consider X.", "time": "10:00 AM" },
+        { "name": "Farhan", "message": "I suggested something similar.", "time": "10:30 AM" },
+        { "name": "Bob", "message": "I agree with Alice!", "time": "10:15 AM" }
+      ]
+    },
+    {
+      "title": "Discussion 2",
+      "replies": [
+        { "name": "Charlie", "message": "Let's focus on Y.", "time": "9:45 AM" },
+        { "name": "Dave", "message": "Y seems interesting.", "time": "10:30 AM" }
+      ]
+    },
+    {
+      "title": "Discussion 3",
+      "replies": [
+        { "name": "Eve", "message": "Z could be better.", "time": "11:00 AM" }
+      ]
+    }
+  ]
+  
