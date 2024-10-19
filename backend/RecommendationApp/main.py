@@ -1,10 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from similarity_retrival import PostSimilarityFinder
+from RecommendationApp.similarity_retrival import PostSimilarityFinder
 from fastapi.middleware.cors import CORSMiddleware
 
 # Initialize the FastAPI app
 app = FastAPI(title="Lecture Document Similarity API", version="1.1")
+
+import os
+print(os.getcwd())
 
 # Configure CORS
 app.add_middleware(
@@ -26,7 +29,7 @@ class SimilarityResponse(BaseModel):
     similar_posts: list
 
 # Initialize the similarity finder
-similarity_finder = PostSimilarityFinder(lecture_doc_path='backend/RecommendationApp/lecture_docs.txt')
+similarity_finder = PostSimilarityFinder(lecture_doc_path='./RecommendationApp/lecture_notes.txt')
 
 @app.post("/similar_posts", response_model=SimilarityResponse)
 def get_similar_posts(request: SimilarityRequest):
