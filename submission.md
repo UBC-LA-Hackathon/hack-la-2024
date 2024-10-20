@@ -5,8 +5,8 @@ List your group members:
 > Nazia, Vivaan, Nikita
 
 # This Project
-> Link to presentation: 
-> Give a brief description of the final product:
+> Link to presentation:
+> <br>Give a brief description of the final product:
 
 # Reflection
 ## Approach
