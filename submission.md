@@ -6,7 +6,7 @@ List your group members:
 
 # This Project
 > Link to presentation:
-> <br>Give a brief description of the final product:
+> <br>Give a brief description of the final product: A project designed to take mundane Canvas discussions and turn them into engaging animations!
 
 # Reflection
 ## Approach
